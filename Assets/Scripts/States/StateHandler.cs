@@ -5,7 +5,8 @@ using UnityEngine;
 public enum States
 {
     Intro = 0,
-    BowlerSelection = 1
+    BowlerSelection = 1,
+    BowlSelection = 2
 }
 
 public class StateHandler : MonoBehaviour
@@ -13,9 +14,10 @@ public class StateHandler : MonoBehaviour
     private IState[] states;
     private IState currentState;
 
-    private void Start()
+    private void Awake()
     {
         states = GetComponentsInChildren<IState>();
+        Debug.Log(states.Length);
     }
 
     public void SetCurrentState(States state)

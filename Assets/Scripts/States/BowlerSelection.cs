@@ -22,7 +22,7 @@ public class BowlerSelection : MonoBehaviour, IState
 
     public void End()
     {
-        stateHandler.SetCurrentState(States.BowlerSelection);
+        stateHandler.SetCurrentState(States.BowlSelection);
         stateHandler.BeginCurrentState();
     }
 }
