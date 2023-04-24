@@ -29,7 +29,14 @@ public class BowlSelection : MonoBehaviour, IState
     {
         GameController.Instance.CurrentBowlType = number;
         GameController.Instance.UpdateDeliveryTypeText();
-        GameController.Instance.CurrentBall++;
+        if(GameController.Instance.CurrentBall < 6)
+        {
+            GameController.Instance.CurrentBall++;
+        }
+        else
+        {
+            GameController.Instance.CurrentBall = 0;
+        }
         cellContainer.SetActive(false);
         stateHandler.EndCurrentState();
     }
@@ -41,7 +48,7 @@ public class BowlSelection : MonoBehaviour, IState
     }
     public void End()
     {
-        //stateHandler.SetCurrentState(States.BattingShotSelection);
-        //stateHandler.BeginCurrentState();
+        stateHandler.SetCurrentState(States.BattingShotSelection);
+        stateHandler.BeginCurrentState();
     }
 }

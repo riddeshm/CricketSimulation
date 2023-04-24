@@ -6,7 +6,8 @@ public enum States
 {
     Intro = 0,
     BowlerSelection = 1,
-    BowlSelection = 2
+    BowlSelection = 2,
+    BattingShotSelection = 3
 }
 
 public class StateHandler : MonoBehaviour

@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour
     private int currentBall = 0;
     private int totalBatsmen;
     private int targetScore;
+    private int totalScore;
+    private int currentScore = 0;
+    private bool isOut = false;
 
     private BowlerType currentBowlerType = BowlerType.NONE;
     private int currentBowlType = 0;
@@ -70,6 +73,30 @@ public class GameController : MonoBehaviour
         set
         {
             currentBowlType = value;
+        }
+    }
+
+    public int CurrentScore
+    {
+        get
+        {
+            return currentScore;
+        }
+        set
+        {
+            currentScore = value;
+        }
+    }
+
+    public bool IsOut
+    {
+        get
+        {
+            return isOut;
+        }
+        set
+        {
+            isOut = value;
         }
     }
 
