@@ -17,6 +17,7 @@ public class BowlerSelection : MonoBehaviour, IState
         bowlerSelectionScreen.SetActive(false);
         GameController.Instance.CurrentBowlerType = (BowlerType)bowlerType;
         GameController.Instance.CurrentOver++;
+        GameController.Instance.CurrentBall = 0;
         stateHandler.EndCurrentState();
     }
 

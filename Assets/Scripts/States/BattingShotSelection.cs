@@ -34,6 +34,7 @@ public class BattingShotSelection : MonoBehaviour, IState
             if(isSafe == 1)
             {
                 GameController.Instance.CurrentScore = 0;
+                GameController.Instance.IsMissed = true;
             }
             else
             {
@@ -57,7 +58,7 @@ public class BattingShotSelection : MonoBehaviour, IState
 
     public void End()
     {
-        //stateHandler.SetCurrentState(States.ResultScreen);
-        //stateHandler.BeginCurrentState();
+        stateHandler.SetCurrentState(States.Result);
+        stateHandler.BeginCurrentState();
     }
 }

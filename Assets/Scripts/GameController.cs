@@ -14,20 +14,44 @@ public class GameController : MonoBehaviour
 {
     private static GameController _instance;
     [SerializeField] private StateHandler stateHandler;
-    [SerializeField] private TextMeshProUGUI deliveryTypeText;
-    private int totalOvers;
-    private int totalBallsPerOver;
+    [SerializeField] private TextMeshProUGUI ballsRemainingText;
+    private int totalOvers = 5;
+    private int totalBallsPerOver = 6;
     private int currentOver = 0;
     private int currentBall = 0;
-    private int totalBatsmen;
-    private int targetScore;
-    private int totalScore;
+    private int totalBatsmen = 5;
+    private int targetScore = 60;
+    private int totalScore = 0;
     private int currentScore = 0;
     private bool isOut = false;
+    private bool isMissed = false;
 
     private BowlerType currentBowlerType = BowlerType.NONE;
     private int currentBowlType = 0;
 
+    public int TargetScore
+    {
+        get
+        {
+            return targetScore;
+        }
+    }
+
+    public int TotalBalls
+    {
+        get
+        {
+            return totalOvers * totalBallsPerOver;
+        }
+    }
+
+    public int TotalBallsPerOver
+    {
+        get
+        {
+            return totalBallsPerOver;
+        }
+    }
 
     public BowlerType CurrentBowlerType
     {
@@ -100,6 +124,42 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public bool IsMissed
+    {
+        get
+        {
+            return isMissed;
+        }
+        set
+        {
+            isMissed = value;
+        }
+    }
+
+    public int TotalBatsmen
+    {
+        get
+        {
+            return totalBatsmen;
+        }
+        set
+        {
+            totalBatsmen = value;
+        }
+    }
+
+    public int TotalScore
+    {
+        get
+        {
+            return totalScore;
+        }
+        set
+        {
+            totalScore = value;
+        }
+    }
+
     public static GameController Instance
     {
         get
@@ -122,10 +182,7 @@ public class GameController : MonoBehaviour
     {
         stateHandler.SetCurrentState(States.Intro);
         stateHandler.BeginCurrentState();
-    }
 
-    public void UpdateDeliveryTypeText()
-    {
-        deliveryTypeText.text = currentBowlerType.ToString() + " ball " + currentBowlType;
+        ballsRemainingText.text = TotalBalls.ToString();
     }
 }

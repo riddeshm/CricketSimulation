@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BowlSelection : MonoBehaviour, IState
 {
     private StateHandler stateHandler;
+    [SerializeField] private TextMeshProUGUI deliveryTypeText;
     [SerializeField] private GameObject cellContainer;
     private Cell[] cells;
 
@@ -28,15 +30,8 @@ public class BowlSelection : MonoBehaviour, IState
     private void OnCellClicked(int number)
     {
         GameController.Instance.CurrentBowlType = number;
-        GameController.Instance.UpdateDeliveryTypeText();
-        if(GameController.Instance.CurrentBall < 6)
-        {
-            GameController.Instance.CurrentBall++;
-        }
-        else
-        {
-            GameController.Instance.CurrentBall = 0;
-        }
+        deliveryTypeText.text = GameController.Instance.CurrentBowlerType.ToString() + " ball " + number;
+        GameController.Instance.CurrentBall++;
         cellContainer.SetActive(false);
         stateHandler.EndCurrentState();
     }
